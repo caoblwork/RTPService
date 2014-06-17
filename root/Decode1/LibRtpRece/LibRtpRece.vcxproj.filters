@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="h264head">
+      <UniqueIdentifier>{61417c4f-5f7e-41e8-b665-242760431a9b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CodeReceive2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawRGB24.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dyna.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="h264-x264.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="h264frame.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketReader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CodeReceive3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CodeReceive.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CodeReceive2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawRGB24.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="h264head\critsect.h">
+      <Filter>h264head</Filter>
+    </ClInclude>
+    <ClInclude Include="h264head\dyna.h">
+      <Filter>h264head</Filter>
+    </ClInclude>
+    <ClInclude Include="h264head\h264frame.h">
+      <Filter>h264head</Filter>
+    </ClInclude>
+    <ClInclude Include="h264head\h264-x264.h">
+      <Filter>h264head</Filter>
+    </ClInclude>
+    <ClInclude Include="h264head\rtpframe.h">
+      <Filter>h264head</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketReader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CodeReceive3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

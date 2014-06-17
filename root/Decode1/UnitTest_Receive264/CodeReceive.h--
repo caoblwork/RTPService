@@ -1,0 +1,161 @@
+#pragma once
+//#include "groupsock.h"
+//#include "h264-x264.h"
+//#pragma comment(lib,"ws2_32.lib")
+
+#include <string>
+#include <iostream>
+#include "../bm_libsdl/bmsdl_show.h"
+extern "C"
+{
+#include <libavcodec/avcodec.h>
+#include <libavutil/mathematics.h>
+#include <libavformat/avformat.h>
+#include <libswscale/swscale.h>
+}
+#include <boost/asio.hpp>
+#include <boost/bind.hpp>
+#include "../lib_Receive/h264/h264-x264.h"
+using namespace std;
+
+
+using namespace boost;
+
+
+/*template <class T>*/
+class QueueRe {
+ 
+		AVFrame ** qbuframe;
+        int qsize;int head;int tail;     // index stop data
+        inline void Free()
+        {
+			for( int i = 0; i < qsize; i++ ) 
+			{
+				av_free(qbuframe[i]);
+				//FFMPEGLibraryInstance.AvcodecFree(qbuframe[i]);
+			}
+			if (qbuframe != 0)
+			{
+				delete []qbuframe;
+				qbuframe =  0;
+			}
+			qsize= 1;
+			head= tail= 0;
+        }
+
+        void CreateMemory(int mn)
+		{
+
+			qbuframe = (AVFrame**)malloc(mn*sizeof(qbuframe[0]));
+			memset( qbuframe, 0, mn*sizeof(qbuframe[0]));
+			for( int i = 0; i < mn; i++ ) 
+			{
+				qbuframe[i] = avcodec_alloc_frame();
+			}
+			qsize = mn;
+		}
+
+public:
+        QueueRe(const int size): qsize(1), qbuframe(0), head(0), tail(0)
+        {
+			CreateMemory(size);
+        }
+ 
+        ~QueueRe()
+        {
+                Free();
+        }
+ 
+ 
+
+		AVFrame *GetWriteBuffer()
+		{
+             if(IsFull())
+			 {
+				 return NULL;
+			 }
+			 return qbuframe[tail];
+		}
+        bool WriteBufferInc()
+		{
+			if(IsFull())
+			{
+				return false;
+			}
+			//Itemlen = data->mbuf;
+		    tail= (tail + 1) & (qsize - 1);
+			return true;
+		}
+        // Retrieve the item from the queue
+
+
+		AVFrame *GetReadBuffer(int& Itemlen)
+		{
+			if(IsEmpty())
+				return 0;
+			//Itemlen = qbuframe[head]->;
+			return qbuframe[head];
+
+		}
+		bool ReadBufferInc()
+		{
+			if(IsEmpty())
+				return false;
+			head = (head+1)&(qsize-1);
+			return true;
+		}
+
+        inline void Clear(void) { head= tail= 0; }
+        inline int  GetCapacity(void) const { return (qsize - 1); }
+        // Count elements
+        inline int  GetBusy(void) const   { return ((head > tail) ? qsize : 0) + tail - head; }
+        // true - if queue if empty
+        inline bool IsEmpty(void) const { return (head == tail); }
+        // true - if queue if full
+        inline bool IsFull(void) const  { return ( ((tail + 1) & (qsize - 1)) == head ); }
+};
+
+
+
+
+class CCodeReceive
+{
+friend DWORD WINAPI ThreadProcReceive(LPVOID param);
+friend DWORD WINAPI ThreadProcShow(LPVOID param);
+
+private:
+	//receiver_unicast _recv;
+	string ip;
+	unsigned short port;
+	boost::asio::io_service io_service;
+
+protected:
+	HANDLE _ThreadHandle ;
+//	HANDLE _OneFrameok;//一帧结束
+	QueueRe *_framebuffer;
+//接收的窗口
+	HWND _hWnd;
+//显示的sdl  
+	BMSDL_Show _sdl;
+//h264解码器
+	H264DecoderContext _decode;
+public:
+	
+	CCodeReceive(void);
+	~CCodeReceive(void);
+
+
+
+public:
+	//void SetPlayHwnd(HWND hWnd);
+
+	BOOL StartReceive(string ip,unsigned short port,HWND hWnd);
+
+public:
+    BOOL StopReceive();
+	BOOL FullScreen()
+	{
+		_sdl.FullScreen();
+		return TRUE;
+	}
+};

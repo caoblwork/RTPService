@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>    
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="options">选项</string>
+    <string name="quit">退出</string>
+    <string name="client">客户</string>
+    <string name="app_name">v1.0.1</string>
+    <string name="description">视频传输</string>
+    <string name="line1">浏览器</string>
+    <string name="line2">视频传输  客户端</string>
+    <string name="about_activity_title">关于</string>
+    <string name="client_activity_title">客户</string>
+    <string name="options_activity_title">设置</string>
+    <string name="warning">打开wifi网络</string>
+    <string name="streaming">传输中!</string>
+    <string name="notification_title">LJMonitor</string>
+    <string name="notification_content">正在传输</string>
+    <string name="client0">丽镜连接测试</string>
+    <string name="client1">连接</string>
+    <string name="about0">丽镜软件</string>
+    <string name="about1">丽镜软件</string>
+    <string name="about2">丽镜软件</string>
+    <string name="about3">丽镜软件</string>
+    <string name="about4">丽镜软件</string>
+    <string name="about5">丽镜软件</string>
+    <string name="settings0">当前分辨率</string>
+    <string name="settings1">当前帧率</string>
+    <string name="settings2">当前码率</string>
+    <string name="settings3">声音传输</string>
+    <string name="settings4">打开/关闭声音传输</string>
+    <string name="settings5">声音编码</string>
+    <string name="settings6">AAC编码</string>
+    <string name="settings7">视频传输</string>
+    <string name="settings8">打开/关闭视频传输</string>
+    <string name="settings9">视频编码</string>
+    <string name="settings10">H.264</string>
+    <string name="settings11">分辨率</string>
+    <string name="settings12">帧率</string>
+    <string name="settings13">码率</string>
+    <string name="settings14">更多选项</string>
+    <string name="settings15">通知</string>
+    <string name="settings16">打开/关闭通知</string>
+    <string name="settings17">目标Ip</string>
+</resources>
